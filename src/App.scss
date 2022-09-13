@@ -15,5 +15,10 @@
   align-items: center;
   .title {
     color: #009879;
+    margin-top: 50px;
+    text-align: center;
+    @media(max-width: 800px){
+      font-size: 25px;
+    }
   }
 }

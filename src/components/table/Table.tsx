@@ -2,34 +2,25 @@ import React, { useState } from "react";
 import "./Table.scss";
 import { IoIosArrowDown } from "react-icons/io";
 
-
-type additionalUserInfo={
-  Зарплата: number;
-  Адресс: string;
-  Номер: string;
+interface tableProps {
+  charactersInfo: object[];
 }
 
-type userInfoType={
-  ФИО: string;
-  Возраст: number;
-  id: number;
-  ДопИнформация: additionalUserInfo;
-}
-
-interface tableProps{
-  usersInfo: userInfoType[];
-}
-
-const Table:React.FC<tableProps> = ({usersInfo}) => {
-  const [choosenOption, setChoosenOption] = useState("Зарплата");
+const Table: React.FC<tableProps> = ({ charactersInfo }) => {
+  const [choosenOption, setChoosenOption] = useState("species");
   const [open, setOpen] = useState(false);
+  const [additionalInfo, setAditionalInfo] = useState([
+    "species",
+    "status",
+    "gender",
+  ]);
   return (
     <table>
       <thead>
         <tr>
           <td>№</td>
-          <td>ФИО</td>
-          <td>Возраст</td>
+          <td>Name</td>
+          <td>Location</td>
           <td
             onClick={() => setOpen(!open)}
             className={`${"changableColumn"} ${open && "open"}`}
@@ -38,7 +29,7 @@ const Table:React.FC<tableProps> = ({usersInfo}) => {
             <IoIosArrowDown className={`${open && "open"}`} />
           </td>
           <div className={`${"hidebar"} ${open && "open"}`}>
-            {Object.keys(usersInfo[0].ДопИнформация).map((option) => (
+            {additionalInfo.map((option) => (
               <h2
                 key={option}
                 onClick={() => {
@@ -53,12 +44,12 @@ const Table:React.FC<tableProps> = ({usersInfo}) => {
         </tr>
       </thead>
       <tbody>
-        {usersInfo.map((item:any) => (
+        {charactersInfo.map((item:any) => (
           <tr key={item.id}>
-            <td>{item["id"]}</td>
-            <td>{item["ФИО"]}</td>
-            <td>{item["Возраст"]}</td>
-            <td>{item.ДопИнформация[choosenOption]}</td>
+            <td>{item.id}</td>
+            <td>{item.name}</td>
+            <td>{item.location.name}</td>
+            <td>{item[choosenOption]}</td>
           </tr>
         ))}
       </tbody>
