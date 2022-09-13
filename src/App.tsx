@@ -1,26 +1,78 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.scss";
+import Table from "./components/table/Table";
+const App: React.FC = () => {
+  const usersInfo = [
+    {
+      ФИО: "Алтынбеков Даурен",
+      Возраст: 18,
+      id: 1,
+      ДопИнформация: {
+        Зарплата: 45000,
+        Адресс: "Бишкек",
+        Номер: "0702 271 103",
+      },
+    },
+    {
+      ФИО: "Икрамов Абдул",
+      Возраст: 19,
+      id: 2,
 
-function App() {
+      ДопИнформация: {
+        Зарплата: 36000,
+        Адресс: "Ошская область",
+        Номер: "0708 318 015",
+      },
+    },
+    {
+      ФИО: "Жайлообек Улукбук",
+      Возраст: 19,
+      id: 3,
+      ДопИнформация: {
+        Зарплата: 57000,
+        Адресс: "Нарынская область",
+        Номер: "0778 388 148",
+      },
+    },
+    {
+      ФИО: "Бакиров Рамазан",
+      Возраст: 20,
+      id: 4,
+      ДопИнформация: {
+        Зарплата: 39000,
+        Адресс: "Токмок",
+        Номер: "0702 231 070",
+      },
+    },
+    {
+      ФИО: "Сагыналиев Талайбек",
+      Возраст: 21,
+      id: 5,
+
+      ДопИнформация: {
+        Зарплата: 76000,
+        Адресс: "Иссык-Куль",
+        Номер: "0709 416 015",
+      },
+    },
+    {
+      ФИО: "Таабылдиева Шоола",
+      Возраст: 18,
+      id: 6,
+      ДопИнформация: {
+        Зарплата: 42000,
+        Адресс: "Чуйская область",
+        Номер: "0705 435 534",
+      },
+    },
+  ];
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="title">Техническое задание</h1>
+      <Table usersInfo={usersInfo}/>
     </div>
   );
-}
+};
 
 export default App;
